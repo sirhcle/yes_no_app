@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app/presentation/providers/chat_provider.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  final ValueChanged onValue;
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,7 @@ class MessageFieldBox extends StatelessWidget {
           icon: const Icon(Icons.send_outlined),
           onPressed: () {
             final textValue = textConntroller.value.text;
+            onValue(textValue);
             textConntroller.clear();
           },
         ));
@@ -34,6 +38,7 @@ class MessageFieldBox extends StatelessWidget {
         //print('submit value: $value');
         textConntroller.clear();
         focusNode.requestFocus();
+        onValue(value);
       },
     );
   }

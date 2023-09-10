@@ -2,12 +2,12 @@ enum FromWho { me, hers }
 
 class Message {
   final String text;
-  final String? imgURL;
+  final String? image;
   final FromWho fromWho;
 
   Message({
     required this.text, 
-    this.imgURL, 
+    this.image, 
     required this.fromWho
   });
 
